@@ -1,5 +1,5 @@
 import { CheckoutContainer } from "./styles";
 
 export function Checkout() {
-        return <CheckoutContainer>Checkout</CheckoutContainer>
-} 
+  return <CheckoutContainer>Checkout</CheckoutContainer>
+}
