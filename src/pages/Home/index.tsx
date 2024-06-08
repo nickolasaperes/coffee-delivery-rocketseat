@@ -2,7 +2,7 @@ import { BannerContainer, Feature, FeatureContainer, FeatureIcon, HomeContainer,
 import homeImage from "../../assets/home-image.svg";
 import { ShoppingCart, Package, Timer, Coffee } from "@phosphor-icons/react";
 import { useTheme } from "styled-components";
-import { Products } from "../../components/Products";
+import { Products } from "./Products";
 
 export function Home() {
   const theme = useTheme();

@@ -1,17 +1,17 @@
-import expressoImg from '../../assets/expresso.svg';
-import americanoImg from '../../assets/americano.svg';
-import expressoCremosoImg from '../../assets/expresso-cremoso.svg';
-import cafeGeladoImg from '../../assets/cafe-gelado.svg';
-import cafeComLeiteImg from '../../assets/cafe-com-leite.svg';
-import latteImg from '../../assets/latte.svg';
-import capuccinoImg from '../../assets/capuccino.svg';
-import macchiatoImg from '../../assets/macchiato.svg';
-import mocaccinoImg from '../../assets/mochaccino.svg';
-import chocolateQuenteImg from '../../assets/chocolate-quente.svg';
-import cubanoImg from '../../assets/cubano.svg';
-import havaianoImg from '../../assets/havaiano.svg';
-import arabeImg from '../../assets/arabe.svg';
-import irlandesImg from '../../assets/irlandes.svg';
+import expressoImg from '../../../assets/expresso.svg';
+import americanoImg from '../../../assets/americano.svg';
+import expressoCremosoImg from '../../../assets/expresso-cremoso.svg';
+import cafeGeladoImg from '../../../assets/cafe-gelado.svg';
+import cafeComLeiteImg from '../../../assets/cafe-com-leite.svg';
+import latteImg from '../../../assets/latte.svg';
+import capuccinoImg from '../../../assets/capuccino.svg';
+import macchiatoImg from '../../../assets/macchiato.svg';
+import mocaccinoImg from '../../../assets/mochaccino.svg';
+import chocolateQuenteImg from '../../../assets/chocolate-quente.svg';
+import cubanoImg from '../../../assets/cubano.svg';
+import havaianoImg from '../../../assets/havaiano.svg';
+import arabeImg from '../../../assets/arabe.svg';
+import irlandesImg from '../../../assets/irlandes.svg';
 import { ProductProps } from '../Product';
 
 export const coffees: ProductProps[] = [
