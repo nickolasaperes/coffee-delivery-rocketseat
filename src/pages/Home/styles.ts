@@ -1,18 +1,19 @@
 import styled from "styled-components";
 
 
-export const HomeContainer = styled.div`
-  margin-top: 7rem;
-  display: flex;
-  justify-content: space-evenly;
-  
-  div{
-  }
+export const HomeContainer = styled.main`
+  margin: 7rem 0;
 
   img {
     width: 476px;
     height: 360px;
   }
+`;
+
+export const BannerContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 7rem;
 `;
 
 export const Title = styled.h1`
@@ -45,10 +46,10 @@ export const Feature = styled.div`
   align-items: center;
 `;
 
-export const FeatureIcon = styled.div<{ backgroundColor: string }>`
+export const FeatureIcon = styled.div<{ color: string }>`
   width: 32px;
   height: 32px;
-  background-color: ${(props) => props.backgroundColor};
+  background-color: ${(props) => props.color};
   aspect-ratio: 1;
   border-radius: 50%;
 

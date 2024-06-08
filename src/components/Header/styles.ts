@@ -8,11 +8,6 @@ export const HeaderContainer = styled.div`
 `;
 
 export const BaseButton = styled.button`
-  outline: 0;
-  border: none;
-  padding: 0.5rem;
-  border-radius: 6px;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,7 +15,7 @@ export const BaseButton = styled.button`
 
   cursor: pointer;
 
-  font-size: 14px;
+  font-size: 0.875rem;
 
   &:disabled {
     opacity: 0.7;

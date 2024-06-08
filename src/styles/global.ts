@@ -23,4 +23,11 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 1rem;
         line-height: 1.3;
     }
+
+    button {
+      outline: 0;
+      border: none;
+      padding: 0.5rem;
+      border-radius: 6px;
+    }
 `
