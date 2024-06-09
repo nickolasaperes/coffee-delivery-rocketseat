@@ -69,7 +69,7 @@ export const ButtonContainer = styled.span`
   gap: 0.5rem;
 `;
 
-export const KartButton = styled.button`
+export const CartButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;

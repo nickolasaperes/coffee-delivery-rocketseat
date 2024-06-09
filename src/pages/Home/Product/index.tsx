@@ -1,5 +1,5 @@
 import { ShoppingCart } from "@phosphor-icons/react";
-import { Badges, ButtonContainer, Description, Footer, KartButton, Price, ProductContainer, Title } from "./styles";
+import { Badges, ButtonContainer, Description, Footer, CartButton, Price, ProductContainer, Title } from "./styles";
 import { ProductBadge } from "../ProductBadge";
 import { CounterButton } from "../../../components/CounterButton";
 
@@ -34,7 +34,7 @@ export function Product({ imgSrc, title, description, badges, price, initialQuan
             <Price><span>R$</span> <span>{price}</span></Price>
             <ButtonContainer>
               <CounterButton initialQuantity={initialQuantity} />
-              <KartButton><ShoppingCart size={20} weight="fill" /></KartButton>
+              <CartButton><ShoppingCart size={20} weight="fill" /></CartButton>
             </ButtonContainer>
           </Footer>
         </ProductContainer>

@@ -45,17 +45,11 @@ export const LocationButton = styled(BaseButton)`
   }
 `;
 
-export const KartButton = styled(BaseButton)`
-  background-color: ${(props) => props.theme["yellow-light"]};
-  color: ${(props) => props.theme["yellow-dark"]};
-
-  &:hover {
-    background-color: ${(props) => props.theme["yellow-dark"]};
-    color: ${(props) => props.theme.white};
-  }
-`;
-
 export const ButtonsContainer = styled.div`
   display: flex;
   gap: 0.75rem;
+
+  a {
+    text-decoration: none;
+  }
 `;
