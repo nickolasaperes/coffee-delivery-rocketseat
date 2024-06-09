@@ -5,6 +5,10 @@ export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 32px 0;
+
+  a {
+    display: flex;
+  }
 `;
 
 export const BaseButton = styled.button`

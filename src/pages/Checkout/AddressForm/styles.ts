@@ -27,13 +27,20 @@ const BaseInput = styled.input`
   outline: 0;
   padding: 1rem;
   background-color: ${(props) => props.theme["base-input"]};
-  color: ${(props) => props.theme["base-label"]};
+  color: ${(props) => props.theme["base-text"]};
+
+  border: 1px solid transparent;
+  border-radius: 4px;
 
   &::placeholder {
     color: ${(props) => props.theme["base-label"]};
   }
   &::-ms-input-placeholder { /* Edge 12 -18 */
     color: ${(props) => props.theme["base-label"]};
+  }
+
+  &:focus {
+    border: 1px solid ${(props) => props.theme["yellow-dark"]};
   }
 `
 

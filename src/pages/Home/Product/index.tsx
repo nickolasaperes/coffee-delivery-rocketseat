@@ -1,6 +1,7 @@
 import { ShoppingCart } from "@phosphor-icons/react";
-import { Badges, ButtonContainer, CounterContainer, Description, Footer, KartButton, Price, ProductContainer, Title } from "./styles";
+import { Badges, ButtonContainer, Description, Footer, KartButton, Price, ProductContainer, Title } from "./styles";
 import { ProductBadge } from "../ProductBadge";
+import { CounterButton } from "../../../components/CounterButton";
 
 
 interface Badge {
@@ -32,11 +33,7 @@ export function Product({ imgSrc, title, description, badges, price, initialQuan
           <Footer>
             <Price><span>R$</span> <span>{price}</span></Price>
             <ButtonContainer>
-              <CounterContainer>
-                <button>-</button>
-                <span>{initialQuantity}</span>
-                <button>+</button>
-              </CounterContainer>
+              <CounterButton initialQuantity={initialQuantity} />
               <KartButton><ShoppingCart size={20} weight="fill" /></KartButton>
             </ButtonContainer>
           </Footer>

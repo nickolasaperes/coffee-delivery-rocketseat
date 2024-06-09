@@ -5,7 +5,7 @@ export const CheckoutContainer = styled.div`
   display: grid;
   grid-template-columns: 1.5fr 1fr;
 
-  grid-gap: 3rem;
+  grid-gap: 2rem;
 
   font-family: 'Baloo 2', monospace;
   margin: 7rem 0;
@@ -15,6 +15,3 @@ export const CheckoutContainer = styled.div`
     font-weight: 900;
   }
 `;
-
-export const AddressContainer = styled.div``;
-export const KartContainer = styled.div``;

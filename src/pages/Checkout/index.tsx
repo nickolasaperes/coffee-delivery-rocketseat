@@ -1,18 +1,20 @@
-import { AddressContainer, CheckoutContainer, KartContainer } from "./styles";
+import { CheckoutContainer } from "./styles";
 import { AddressForm } from "./AddressForm";
 import { PaymentMethod } from "./PaymentMethod";
+import { OrderSummary } from "./OrderSummary";
 
 export function Checkout() {
   return (
     <CheckoutContainer>
-      <AddressContainer>
+      <div>
         <h2>Complete seu pedido</h2>
         <AddressForm />
         <PaymentMethod />
-      </AddressContainer>
-      <KartContainer>
+      </div>
+      <div>
         <h2>Cafés selecionados</h2>
-      </KartContainer>
+        <OrderSummary />
+      </div>
     </CheckoutContainer>
   )
 }
