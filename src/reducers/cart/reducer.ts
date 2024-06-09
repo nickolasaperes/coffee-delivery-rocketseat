@@ -1,5 +1,6 @@
 import { ProductType } from "../../pages/Home/Product";
 import { ActionTypes } from "./actions";
+import { produce } from "immer";
 
 export interface ProductCartType extends ProductType {
   quantity: number;
@@ -14,54 +15,42 @@ interface CartReducerActionType {
 }
 
 export function cartReducer(state: ProductCartType[], action: CartReducerActionType) {
-  // TODO: Refactor to use immer
   switch(action.type) {
     case ActionTypes.INCREASE_PRODUCT_QUANTITY: {
-      return state.map((product) => {
-        if(product.id === action.payload.id) {
-          return {
-            ...product,
-            quantity: product.quantity + 1,
-          }
-        }
-        return product;
+      const productIndex = state.findIndex((product) => {
+        return product.id === action.payload.id
+      })
+
+      if(productIndex < 0) return state;
+
+      return produce(state, (draft) => {
+        draft[productIndex].quantity++;
       })
     }
     case ActionTypes.DECREASE_PRODUCT_QUANTITY: {
-      return state.map((product) => {
-        if(product.id === action.payload.id) {
-          if (product.quantity <= 0) {
-            return product;
-          }
+      const productIndex = state.findIndex((product) => {
+        return product.id === action.payload.id
+      })
 
-          return {
-            ...product,
-            quantity: product.quantity - 1,
-          }
-        }
-        return product;
+      if(productIndex < 0) return state;
+
+      return produce(state, (draft) => {
+        if (draft[productIndex].quantity <= 0) return;
+        draft[productIndex].quantity--;
       })
     }
     case ActionTypes.ADD_PRODUCT: {
-      const existingProduct = state.find((product) => product.id === action.payload.product!.id)
+      const existingProduct = state.findIndex((product) => {
+        return product.id === action.payload.product!.id
+      })
 
-      const newProduct = {
-        ...action.payload.product
-      };
-
-      if(existingProduct) {
-        newProduct.quantity = (newProduct.quantity ?? 0) + existingProduct.quantity
-
-        return [
-          ...state.filter((product) => product.id !== existingProduct.id),
-          newProduct as ProductCartType
-        ]
-      }
-
-      return [
-        ...state,
-        newProduct as ProductCartType
-      ];
+      return produce(state, (draft) => {
+        if(existingProduct >= 0) {
+          draft[existingProduct].quantity += action.payload.product!.quantity
+        } else {
+          draft.push(action.payload.product!)
+        }
+      })
     }
     case ActionTypes.REMOVE_PRODUCT: {
       return state.filter((product) => {
