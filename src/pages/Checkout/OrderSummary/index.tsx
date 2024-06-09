@@ -61,7 +61,7 @@ export function OrderSummary() {
         <PriceTotal><span>Total</span><span>R$ {totalPrice.toFixed(2)}</span></PriceTotal>
       </PriceSummary>
 
-      <NavLink to="/success" title="Checkout Success"><ConfirmButton disabled={cartProducts.length === 0}>Confirmar Pedido</ConfirmButton></NavLink>
+      <ConfirmButton type="submit" disabled={cartProducts.length === 0}>Confirmar Pedido</ConfirmButton>
     </OrderSummaryContainer>
   )
 }

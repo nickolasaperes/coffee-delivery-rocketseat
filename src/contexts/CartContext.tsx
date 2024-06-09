@@ -1,6 +1,7 @@
-import { ReactNode, createContext, useEffect, useReducer } from "react"
+import { ReactNode, createContext, useEffect, useReducer, useState } from "react"
 import { ProductCartType, cartReducer } from "../reducers/cart/reducer";
 import { addProductAction, decreaseProductQuantityAction, increaseProductQuantityAction, removeProductAction } from "../reducers/cart/actions";
+import { CheckoutFormData } from "../pages/Checkout";
 
 
 interface CartContextProviderProps {
@@ -19,21 +20,38 @@ interface AddressType {
 
 interface PaymentMethodType {
   id?: string;
-  value: string;
+  description: string;
 }
 
 interface CartContextType {
   cartProducts: ProductCartType[],
-  deliveryPrice?: number,
-  address?: AddressType,
+  deliveryPrice: number | null,
+  address: AddressType,
   paymentMethod?: PaymentMethodType,
   increaseProductQuantity: (id: string) => void;
   decreaseProductQuantity: (id: string) => void;
   addProduct: (product: ProductCartType) => void;
   removeProduct: (id: string) => void;
+  updateAddress: (data: CheckoutFormData) => void;
+  updateDeliveryPrice: () => void;
 }
 
-const localStorageKey = '@coffee-delivery:cart-state-1.0.0';
+const paymentMethods: PaymentMethodType[] = [
+  {
+    id: "credit-card",
+    description: 'Cartão de Crédito',
+  },
+  {
+    id: "debit-card",
+    description: 'Cartão de Débito',
+  },
+  {
+    id: "money",
+    description: 'Dinheiro',
+  }
+]
+
+const cartLocalStorageKey = '@coffee-delivery:cart-state-1.0.0';
 
 export const CartContext = createContext({} as CartContextType);
 
@@ -43,7 +61,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     [],
     (initialState) => {
       const storedStateAsJSON = localStorage.getItem(
-        localStorageKey,
+        cartLocalStorageKey,
       )
 
       if (storedStateAsJSON) {
@@ -54,9 +72,12 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     },
   )
 
+  const [checkoutData, setCheckoutData] = useState<CheckoutFormData>({} as CheckoutFormData);
+  const [deliveryPrice, setDeliveryPrice] = useState<number | null>(null);
+
   useEffect(() => {
     const stateJSON = JSON.stringify(cartState)
-    localStorage.setItem(localStorageKey, stateJSON)
+    localStorage.setItem(cartLocalStorageKey, stateJSON)
   }, [cartState])
 
   function increaseProductQuantity(id: string) {
@@ -75,13 +96,29 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     dispatch(removeProductAction(id));
   }
 
+  function updateAddress(data: CheckoutFormData) {
+    setCheckoutData(data);
+  }
+
+  function updateDeliveryPrice() {
+    const prices = [3.99, 4.99, 5.99, 6.99, 7.99, 8.99, 9.99, 10.99]
+    setDeliveryPrice(prices[Math.floor(Math.random() * prices.length)])
+  }
+
+  const address = checkoutData as AddressType;
+  const paymentMethod = paymentMethods.find((method) => method.id === checkoutData.paymentMethod);
+
   const contextValue: CartContextType = {
     cartProducts: cartState,
-    deliveryPrice: 11.99,
+    deliveryPrice,
+    address,
+    paymentMethod,
     increaseProductQuantity,
     decreaseProductQuantity,
     addProduct,
     removeProduct,
+    updateAddress,
+    updateDeliveryPrice,
   };
 
   return (

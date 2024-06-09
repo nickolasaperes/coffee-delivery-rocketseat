@@ -9,17 +9,17 @@ export const AddressContainer = styled.div`
   background-color: ${(props) => props.theme["base-card"]};
   border-radius: 6px;
 
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    margin-top: 2rem;
-  }
-
   p {
     display: flex;
     gap: 0.75rem;
   }
+`;
+
+export const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 2rem;
 `;
 
 const BaseInput = styled.input`
@@ -41,6 +41,10 @@ const BaseInput = styled.input`
 
   &:focus {
     border: 1px solid ${(props) => props.theme["yellow-dark"]};
+  }
+
+  &.error {
+    border: 1px solid ${(props) => props.theme.red};
   }
 `
 
@@ -88,5 +92,14 @@ export const Description = styled.div`
       color: ${(props) => props.theme["base-text"]};
       font-size: 0.875rem;
     }
+  }
+`;
+
+export const FormErrors = styled.div`
+  margin-top: 1rem;
+  font-weight: 900;
+
+  span {
+    color: ${(props) => props.theme.red} !important;
   }
 `;

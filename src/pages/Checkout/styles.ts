@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-export const CheckoutContainer = styled.div`
+export const CheckoutContainer = styled.form`
   display: grid;
   grid-template-columns: 1.5fr 1fr;
 

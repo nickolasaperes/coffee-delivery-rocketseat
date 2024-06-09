@@ -1,8 +1,12 @@
 import { CurrencyDollar, MapPin, Timer } from "@phosphor-icons/react";
 import { CheckoutSuccessContainer, IllustrationContainer, InfoIcon, OrderDetails, OrderInformation, Subtitle, TextContainer, Title } from "./styles";
 import illustration from '../../assets/checkout-illustration.svg';
+import { useContext } from "react";
+import { CartContext } from "../../contexts/CartContext";
 
 export function CheckoutSuccess() {
+  const { address, paymentMethod } = useContext(CartContext);
+
   return (
     <CheckoutSuccessContainer>
       <div>
@@ -15,8 +19,8 @@ export function CheckoutSuccess() {
           <OrderInformation>
             <InfoIcon color="purple"><MapPin size={16} weight="fill" /></InfoIcon>
             <div>
-              <div>Entrega em <b>Rua João Daniel Martinelli, 102</b></div>
-              <div>Farrapos - Porto Alegre, RS</div>
+              <div>Entrega em <b>{`${address.street}, ${address.number}`}</b></div>
+              <div>{`${address.neighborhood} - ${address.city}, ${address.uf}`}</div>
             </div>
           </OrderInformation>
           <OrderInformation>
@@ -30,7 +34,7 @@ export function CheckoutSuccess() {
             <InfoIcon color="yellow-dark"><CurrencyDollar size={16} /></InfoIcon>
             <div>
               <div>Pagamento na entrega</div>
-              <div><b>Cartão de crédito</b></div>
+              <div><b>{paymentMethod?.description}</b></div>
             </div>
           </OrderInformation>
         </OrderDetails>

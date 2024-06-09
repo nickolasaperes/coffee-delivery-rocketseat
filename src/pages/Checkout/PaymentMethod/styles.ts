@@ -9,12 +9,6 @@ export const PaymentMethodContainer = styled.div`
   background-color: ${(props) => props.theme["base-card"]};
   border-radius: 6px;
 
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
   p {
     display: flex;
     gap: 0.75rem;
@@ -74,5 +68,18 @@ export const RadioInput = styled.input`
   &:checked + label {
     background-color: ${(props) => props.theme["purple-light"]};
     border: 1px solid ${(props) => props.theme["purple"]};
+  }
+
+  &.error + label {
+    border: 1px solid ${(props) => props.theme["red"]};
+  }
+`;
+
+export const FormErrors = styled.div`
+  margin-top: 1rem;
+  font-weight: 900;
+
+  span {
+    color: ${(props) => props.theme.red} !important;
   }
 `;
