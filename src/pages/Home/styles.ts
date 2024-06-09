@@ -47,8 +47,8 @@ export const Feature = styled.div`
 `;
 
 export const FeatureIcon = styled.div<{ color: string }>`
-  width: 32px;
-  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
   background-color: ${(props) => props.color};
   aspect-ratio: 1;
   border-radius: 50%;
