@@ -66,7 +66,7 @@ export const ItemDescription = styled.div`
 export const ButtonsContainer = styled.div`
   display: flex;
   margin-top: 0.5rem;
-  gap: 0.5rem;
+  gap: 1rem;
 `;
 
 export const RemoveButton = styled.button`
@@ -140,7 +140,24 @@ export const ConfirmButton = styled.button`
 
   cursor: pointer;
 
-  &:hover {
+  &:not(:disabled):hover {
     background-color: ${(props) => props.theme["yellow-dark"]};
   }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+`;
+
+export const EmptyCartMessage = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: 'Roboto', sans-serif;
+
+  font-size: 1.25rem;
+  color: ${(props) => props.theme["base-subtitle"]};
+  font-weight: 900;
 `;

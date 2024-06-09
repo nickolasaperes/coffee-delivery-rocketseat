@@ -12,11 +12,7 @@ export function Products() {
           return (
             <Product
               key={coffee.id}
-              imgSrc={coffee.imgSrc}
-              title={coffee.title}
-              description={coffee.description}
-              badges={coffee.badges}
-              price={coffee.price}
+              product={coffee}
             />
           )
         })}

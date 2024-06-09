@@ -1,15 +1,18 @@
 import { ShoppingCart } from "@phosphor-icons/react";
 import { ItemCounter, CartContainer } from "./styles";
+import { useContext } from "react";
+import { CartContext } from "../../contexts/CartContext";
 
-interface CartButtonProps {
-  itemsCounter?: number;
-}
 
-export function CartButton({ itemsCounter = 0 }: CartButtonProps) {
+export function CartButton() {
+  const { cartProducts } = useContext(CartContext);
+
+  const itemsQuantity = cartProducts.length;
+
   return (
     <CartContainer>
       <ShoppingCart size={22} weight="fill" />
-      {itemsCounter > 0 && <ItemCounter>{itemsCounter}</ItemCounter>}
+      {itemsQuantity > 0 && <ItemCounter>{itemsQuantity}</ItemCounter>}
     </CartContainer>
   )
 }
