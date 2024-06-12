@@ -2,11 +2,16 @@ import styled from "styled-components";
 
 export const CheckoutSuccessContainer = styled.div`
   padding: 5rem 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 5rem;
+  display: flex;
+  gap: 5rem;
   align-items: end;
   justify-content: center;
+  flex-wrap: wrap;
+
+  > div {
+    flex: 1;
+    min-width: fit-content;
+  }
 `;
 
 export const TextContainer = styled.div`
